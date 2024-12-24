@@ -1,3 +1,4 @@
+require_relative "../app/middleware/api_key_authenticator"
 require_relative "boot"
 
 require "rails/all"
@@ -8,6 +9,7 @@ Bundler.require(*Rails.groups)
 
 module QuoteVault
   class Application < Rails::Application
+    config.middleware.use ApiKeyAuthenticator
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
 
